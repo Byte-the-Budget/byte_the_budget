@@ -42,8 +42,14 @@ Managing personal finances can be challenging, especially for young professional
 
 ## Contributors
 
+- [Amiant Adebayo]()
+- [Brian Shipman]()
+- [Ed Berisha]()
+- [Kristi Panko]()
 - [Shraddha Rao](https://github.com/Limeload)
-- [Collaborator Name](https://github.com/collaboratorusername)
+- [Takashi Honzawa]()
+- [Tanner Patterson]()
+- [Umar Khan]()
 
 Thank you for considering contributing to Byte the Budget! Your contributions help improve the platform and make it more valuable for users. Whether you want to report a bug, suggest a feature, or contribute code, we appreciate your involvement.
 
