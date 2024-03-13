@@ -1,0 +1,32 @@
+{
+    "chasefreecredit": {
+        "type": "asset",
+        "colmap": {
+            "Date": "Transaction Date",
+            "Description": "Description",
+            "TransactionCategory": "Category",
+            "TransactionType": "Type",
+            "Amount": "Amount"
+        }
+    },
+    "chaseamzn": {
+        "type": "asset",
+        "colmap": {
+            "Date": "Transaction Date",
+            "Description": "Description",
+            "TransactionCategory": "Category",
+            "TransactionType": "Type",
+            "Amount": "Amount"
+        }
+    },
+    "chasecheck": {
+        "type": "asset",
+        "colmap": {
+            "Date": "Posting Date",
+            "Description": "Description",
+            "TransactionType": "Type",
+            "Amount": "Amount"
+        }
+    }
+}
+]
