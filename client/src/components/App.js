@@ -1,8 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Routes, Route } from "react-router-dom";
+import NotFoundPage from "./NotFoundPage"
 
 function App() {
-  return <h1>Project Client</h1>;
+  return (
+    <Routes>
+      <Route path="/" element={<h1>LandingPage</h1>}/>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  )
 }
 
 export default App;
