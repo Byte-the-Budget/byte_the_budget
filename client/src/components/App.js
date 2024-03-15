@@ -1,8 +1,30 @@
 import React, { useEffect, useState } from "react";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { AuthProvider } from "./AuthContext"; 
+import Nav from "./Nav"; 
 
 function App() {
-  return <h1>Project Client</h1>;
+  return (
+    <Router>
+      <AuthProvider>
+        <Nav />
+        <Switch>
+          <Route path="/" exact>
+            <h1>Home Page</h1>
+          </Route>
+          <Route path="/login">
+            <h1>Login</h1>
+            {/* Placeholder for our login component */}
+          </Route>
+          <Route path="/signup">
+            <h1>Signup</h1>
+            {/* Placeholder for our signup component */}
+          </Route>
+          {/* Define other routes here */}
+        </Switch>
+      </AuthProvider>
+    </Router>
+  );
 }
 
 export default App;
