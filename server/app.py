@@ -19,8 +19,19 @@ from plaid.model.auth_get_request import AuthGetRequest
 from config import app, db, api
 from flask_sqlalchemy import SQLAlchemy
 from plaid.model.identity_get_request import IdentityGetRequest 
+from models import User  
+from bcrypt import hashpw, gensalt
+from sqlalchemy.exc import IntegrityError
+from flask_bcrypt import Bcrypt
 
 
+
+bcrypt = Bcrypt(app)
+
+
+
+with app.app_context():
+    db.create_all()
 
 
 FRONTEND_URL = os.getenv('FRONTEND_URL')
@@ -55,6 +66,40 @@ client = plaid_api.PlaidApi(api_client)
 def index():
     return '<h1>Project Server</h1>'
 
+@app.route('/api/signup', methods=['POST'])
+def signup():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+
+    if User.query.filter_by(username=username).first():
+        return jsonify({'error': 'Username already exists'}), 400
+
+    hashed_password = bcrypt.generate_password_hash(password).decode('utf-8')
+
+    new_user = User(username=username, password=hashed_password)
+    db.session.add(new_user)
+    try:
+        db.session.commit()
+        return jsonify({'message': 'User created successfully'}), 201
+    except IntegrityError:
+        db.session.rollback()
+        return jsonify({'error': 'Username already exists'}), 400
+
+@app.route('/api/login', methods=['POST'])
+def login():
+    data = request.json
+    username = data.get('username')
+    password = data.get('password')
+
+    user = User.query.filter_by(username=username).first()
+
+    if user and bcrypt.check_password_hash(user.password, password):
+        return jsonify({'message': 'Login successful'}), 200
+    else:
+        return jsonify({'error': 'Invalid username or password'}), 401
+
+        
 @app.route('/api/create_link_token', methods=['GET'])
 def create_link_token():
     request = LinkTokenCreateRequest(
@@ -164,7 +209,6 @@ def get_auth_data():
                 'name': account.name,
                 'type': account.type,
                 'subtype': account.subtype,
-                # Add more fields as needed
             }
             account_details.append(account_info)
 
