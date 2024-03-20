@@ -15,7 +15,13 @@ from plaid.model.products import Products
 from plaid.model.country_code import CountryCode
 from plaid.model.item_public_token_exchange_request import ItemPublicTokenExchangeRequest
 from plaid.model.transactions_get_request import TransactionsGetRequest
+from plaid.model.auth_get_request import AuthGetRequest
 from config import app, db, api
+from flask_sqlalchemy import SQLAlchemy
+from plaid.model.identity_get_request import IdentityGetRequest 
+
+
+
 
 FRONTEND_URL = os.getenv('FRONTEND_URL')
 REACT_APP_BACKEND_URL = os.getenv('REACT_APP_BACKEND_URL')
@@ -100,7 +106,7 @@ def get_transactions():
         access_token = request.args.get('access_token')
 
        
-        start_date_str = '2023-01-01'  
+        start_date_str = '2000-01-01'  
         end_date_str = '2024-03-19'  
 
         start_date = datetime.strptime(start_date_str, '%Y-%m-%d').date()
@@ -138,6 +144,82 @@ def get_transactions():
         return jsonify({'transactions': transaction_details})
     except ApiException as e:
         return jsonify({'error': f'Failed to fetch transactions: {e}'}), 500
+
+@app.route('/api/auth/get', methods=['GET'])
+def get_auth_data():
+    try:
+        access_token = request.args.get('access_token')
+
+        auth_request = AuthGetRequest(access_token=access_token)
+        auth_response = client.auth_get(auth_request)
+
+        accounts = auth_response.accounts
+        numbers = auth_response.numbers
+        
+
+        account_details = []
+        for account in accounts:
+            account_info = {
+                'account_id': account.account_id,
+                'name': account.name,
+                'type': account.type,
+                'subtype': account.subtype,
+                # Add more fields as needed
+            }
+            account_details.append(account_info)
+
+        
+        return jsonify({'accounts': account_details, 'numbers': numbers})
+    except ApiException as e:
+        return jsonify({'error': f'Failed to fetch auth data: {e}'}), 500
+
+
+@app.route('/api/identity/get', methods=['GET'])
+def get_identity_data():
+    try:
+        access_token = request.args.get('access_token')
+
+        identity_request = IdentityGetRequest(access_token=access_token)
+        identity_response = client.identity_get(identity_request)
+
+        accounts = identity_response.accounts
+
+        identity_details = []
+
+        for account in accounts:
+            account_id = account.account_id
+            account_name = account.name
+
+            account_identities = account.owners[0]  
+            
+            addresses = []
+            for address in account_identities.addresses:
+                address_dict = address.to_dict()
+                addresses.append(address_dict)
+            
+     
+            emails = [email.data['email'] if isinstance(email.data, dict) else email.data for email in account_identities.emails]
+            
+
+            phone_numbers = [str(phone_number) for phone_number in account_identities.phone_numbers]
+
+            identity_info = {
+                'account_id': account_id,
+                'account_name': account_name,
+                'identities': {
+                    'addresses': addresses,
+                    'emails': emails,  
+                    'names': account_identities.names,
+                    'phone_numbers': phone_numbers 
+                }
+            }
+
+            identity_details.append(identity_info)
+
+        return jsonify({'identities': identity_details}), 200
+    except ApiException as e:
+        return jsonify({'error': f'Failed to fetch identity data: {e}'}), 500
+
 
     
 if __name__ == '__main__':
