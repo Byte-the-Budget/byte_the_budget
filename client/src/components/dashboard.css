@@ -1,0 +1,63 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.nav-bar-placeholder {
+  height: 80px;
+  padding: 0 32px;
+  border-bottom: 1pt solid #F2F2F2;
+}
+
+.layout {
+  width: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 16px 32px 16px 16px;
+  background-color: #F4F5F6;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  gap: 16px; 
+  height: 100%
+}
+
+.grid-item {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+}
+
+.expense-budget {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 1;
+}
+.expense-category{
+  grid-column: 3 / span 2;
+  grid-row: 1 / span 1;
+}
+.calendar {
+  grid-column: 5 / span 3;
+  grid-row: 1 / span 1;
+}
+.goals {
+  grid-column: 1 / span 4;
+  grid-row: 2 / span 1;
+}
+.expense-budget-monthly {
+  grid-column: 1 / span 4;
+  grid-row: 3 / span 1;
+}
+.transactions {
+  grid-column: 5 / span 3;
+  grid-row: 2 / span 2;
+}
