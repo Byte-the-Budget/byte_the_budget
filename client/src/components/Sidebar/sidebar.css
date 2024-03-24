@@ -1,0 +1,25 @@
+.side-bar {
+  height: 100%;
+  width: 210px;
+  padding: 16px 16px 16px 32px;
+  border-right: 1pt solid #F2F2F2;
+}
+
+.active-link {
+  color: #000000;
+  font-weight: bold;
+}
+
+.inactive-link {
+  color: #000000
+}
+
+.active-icon {
+  opacity: 100%;
+  margin-right: 8px;
+}
+
+.inactive-icon {
+  opacity: 50%;
+  margin-right: 8px;
+}
