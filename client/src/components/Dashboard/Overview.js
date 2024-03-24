@@ -27,7 +27,7 @@ function Overview() {
       <div className="grid-item expense-budget">
         <h6 className="item-title">Your March expense so far</h6>
         <div style={{height: 'calc(100% - 50px)', width: '100%', display: 'flex', justifyContent: 'center'}}>
-          <HalfDonutChart />
+          <HalfDonutChart budget={currentBudget} expense={currentExpense}/>
         </div>
         <div className='d-flex justify-content-between'>
           <span style={{fontSize: '14px'}}>${currentBudget}.00</span>

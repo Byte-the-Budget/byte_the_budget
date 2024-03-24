@@ -1,10 +1,11 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const HalfDonutChart = () => {
+const HalfDonutChart = ({budget, expense}) => {
   const data = {
+
     datasets: [{
-      data: [5400, 3820],
+      data: [budget, expense],
       backgroundColor: ["#FE9168", "#8DE4FF"],
     }]
   };
@@ -17,7 +18,7 @@ const HalfDonutChart = () => {
     plugins: {
       title: {
         display: false, 
-      },
+      }
     }
   };
 
