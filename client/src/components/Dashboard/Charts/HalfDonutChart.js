@@ -4,7 +4,7 @@ import { Doughnut } from 'react-chartjs-2';
 const HalfDonutChart = () => {
   const data = {
     datasets: [{
-      data: [300, 50],
+      data: [5400, 3820],
       backgroundColor: ["#FE9168", "#8DE4FF"],
     }]
   };
@@ -13,10 +13,10 @@ const HalfDonutChart = () => {
     circumference: 180,
     rotation: -90,
     cutout: "60%",
-    aspectRatio: 1,
+    aspectRatio: 2,
     plugins: {
       title: {
-        display: false, // This line hides the title
+        display: false, 
       },
     }
   };

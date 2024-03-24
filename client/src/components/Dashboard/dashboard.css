@@ -35,7 +35,7 @@
 .grid-item {
   background-color: #FFFFFF;
   border-radius: 10px;
-  padding: 12px;
+  padding: 20px;
 }
 
 .expense-budget {
@@ -46,20 +46,24 @@
   grid-column: 3 / span 2;
   grid-row: 1 / span 1;
 }
-.calendar {
+/* .calendar {
   grid-column: 5 / span 2;
   grid-row: 1 / span 1;
 }
 .goals {
   grid-column: 1 / span 4;
   grid-row: 2 / span 1;
+} */
+.transactions {
+  grid-column: 5 / span 2;
+  grid-row: 1 / span 3;
+  overflow-y: scroll;
+}
+.transactions::-webkit-scrollbar {
+  width: 0;
 }
 .expense-budget-monthly {
   grid-column: 1 / span 4;
-  grid-row: 3 / span 1;
-}
-.transactions {
-  grid-column: 5 / span 2;
   grid-row: 2 / span 2;
 }
 
@@ -67,3 +71,26 @@
   font-size: 14px;
   font-weight: bold;
 }
+
+.transaction-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+  padding: 12px;
+  background-color: #efefef;
+  border-radius: 6px;
+}
+
+.chart-container {
+  height: calc(100% - 25px);
+  width: 100%;
+}
+.transaction-category {
+  font-size: 13px;
+}
+.transaction-amount {
+  font-size: 13px;
+  font-weight: bold;
+}
+

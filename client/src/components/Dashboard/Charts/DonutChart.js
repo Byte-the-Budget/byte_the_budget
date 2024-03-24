@@ -1,12 +1,16 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-const DonutChart = () => {
+const DonutChart = ({categories, expenses}) => {
+  console.log(categories)
   const data = {
-    datasets: [{
-      data: [300, 50],
-      backgroundColor: ["#FE9168", "#8DE4FF"],
-    }]
+    labels: categories,
+    datasets: [
+      {
+        data: expenses,
+        backgroundColor: ["#EA334B", "#3070F5", "#57BEB5", "#AE59DC", "#F5C242", "#5B61D6", "#F2A73B"]
+      }
+    ]
   };
 
   const options = {
@@ -17,7 +21,7 @@ const DonutChart = () => {
         display: false,
       },
       legend: {
-        display: false,
+        position: 'right', 
       }
     }
   };
