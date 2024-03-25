@@ -1,4 +1,4 @@
-export const currentBudget = 5400;
+export const currentBudget = 5200;
 export const currentExpense = 3800;
 
 export const months = [
@@ -25,19 +25,19 @@ export const last6Months = startMonthIndex <= currentMonthIndex
   ? months.slice(startMonthIndex, currentMonthIndex + 1) 
   : months.slice(startMonthIndex).concat(months.slice(0, currentMonthIndex + 1));
 
-export const last6MonthsBudget = [5000, 5000, 5000, 5400, 5400, 5400];
-export const last6MonthsExpense = [4950, 4700, 5100, 5200, 5370, 3820];
+export const last6MonthsBudget = [4800, 4800, 4800, 5200, 5200, 5200];
+export const last6MonthsExpense = [4720, 4700, 4900, 5160, 5000, 3820];
 
 export const categories = [
+  "Housing",
   "Groceries",
   "Dining",
-  "Electronics",
   "Transportation",
   "Utilities",
   "Household",
 ]
 
-export const expensesByCategory = [400, 200, 50, 100, 400, 300]
+export const expensesByCategory = [2000, 400, 200, 50, 100, 400, 300]
 
 export const transactions = [{'dateAndTime': '2024-03-16 04:08:13',
   'category': 'Groceries',
@@ -120,3 +120,14 @@ export const transactions = [{'dateAndTime': '2024-03-16 04:08:13',
   'amount': 74.43,
   'transactionId': 'TX75027'}
 ];
+
+export const budgets = [
+  {category: "Housing", budget: 2000, amountSpent: 2000},
+  {category: "Utilities", budget: 500, amountSpent: 415.0},
+  {category: "Groceries", budget: 400, amountSpent: 274.5},
+  {category: "Dining", budget: 550, amountSpent: 357.5},
+  {category: "Household", budget: 350, amountSpent: 262.5},
+  {category: "Transportation", budget: 650, amountSpent: 525},
+  {category: "Personal", budget: 500, amountSpent: 426.33},
+  {category: "Clothing", budget: 250, amountSpent: 125.12}
+]

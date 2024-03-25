@@ -1,34 +1,13 @@
-.App {
-  height: 100vh;
-  width: 100%;
+.plan-container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  align-content: center;
-  gap: 2vw;
-  flex-wrap: wrap;
-  background-color: #ddd;
+  justify-content: space-between;
+  height: 100%;
 }
 
-.dataCard {
-  background-color: #efefef;
-  border-radius: 0.5em;
-  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
-  padding: 1em;
-}
-
-.revenueCard {
-  width: 92%;
-  height: 20rem;
-}
-
-.customerCard {
-  width: 50%;
-  height: 20rem;
-}
-
-.categoryCard {
-  width: 40%;
-  height: 20rem;
+.plan-card {
+  padding: 20px;
+  height: 100%;
+  width: calc(50% - 8px);
+  border-radius: 10px;
+  background-color: #ffffff;
 }
