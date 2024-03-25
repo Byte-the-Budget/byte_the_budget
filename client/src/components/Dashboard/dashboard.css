@@ -1,0 +1,114 @@
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+/******* navbar placeholder *******/
+.nav-bar-placeholder {
+  height: 80px;
+  padding: 0 32px;
+  border-bottom: 1pt solid #F2F2F2;
+}
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}
+.logo-container {
+  margin-right: 8px;
+}
+.logo-container img {
+  height: 50px;
+  width: 50px;
+  border: 2pt solid #F2F2F2;
+  border-radius: 25px;
+}
+.navbar-brand span {
+  font-size: 20px;
+  font-weight: bold;
+}
+/*********************************/
+
+.layout {
+  height: calc(100% - 80px);
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.main {
+  flex-grow: 1;
+  padding: 16px 32px 16px 16px;
+  background-color: #F4F5F6;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: calc(33.3333% - 10.66666px);
+  gap: 16px; 
+  height: 100%
+}
+
+.grid-item {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.expense-budget {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 1;
+}
+.expense-category{
+  grid-column: 3 / span 2;
+  grid-row: 1 / span 1;
+}
+/* .calendar {
+  grid-column: 5 / span 2;
+  grid-row: 1 / span 1;
+}
+.goals {
+  grid-column: 1 / span 4;
+  grid-row: 2 / span 1;
+} */
+.transactions {
+  grid-column: 5 / span 2;
+  grid-row: 1 / span 3;
+  overflow-y: scroll;
+}
+.transactions::-webkit-scrollbar {
+  width: 0;
+}
+.expense-budget-monthly {
+  grid-column: 1 / span 4;
+  grid-row: 2 / span 2;
+}
+
+.item-title {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.transaction-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+  padding: 12px;
+  background-color: #efefef;
+  border-radius: 6px;
+}
+
+.chart-container {
+  height: calc(100% - 25px);
+  width: 100%;
+}
+.transaction-category {
+  font-size: 13px;
+}
+.transaction-amount {
+  font-size: 13px;
+  font-weight: bold;
+}
+
