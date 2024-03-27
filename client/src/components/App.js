@@ -1,3 +1,17 @@
+10-plaid-integration
+import React, { useEffect, useState } from "react";
+import { Switch, Routes, Route } from "react-router-dom";
+import PlaidIntegration from "./PlaidIntegration"
+import NotFoundPage from "./NotFoundPage";
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<h1>LandingPage</h1>}/>
+      <Route path="/link-bank-account" element={<PlaidIntegration/>}/>
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+  )
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./AuthContext"; 
@@ -26,6 +40,7 @@ function App() {
       </AuthProvider>
     </Router>
   );
+main
 }
 
 export default App;

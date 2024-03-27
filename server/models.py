@@ -9,4 +9,7 @@ class User(db.Model, SerializerMixin):
     password = db.Column(db.String(100), nullable=False)
 
     def __repr__(self):
+10-plaid-integration
         return f"User('{self.username}')"
+        return f"User('{self.username}')"
+main
